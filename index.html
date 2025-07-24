@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bashar Jehad Younis</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #e0e6ff;
+            background: #0a0b1e;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, #1a1a3e 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, #2d1b69 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, #0f3460 0%, transparent 50%);
+            z-index: -2;
+        }
+
+        /* Cyber grid pattern */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            background: rgba(15, 25, 45, 0.8);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-img-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a1a3e, #2d1b69);
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .name {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .title {
+            font-size: 1.2rem;
+            color: #00ffff;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        /* Section Styling */
+        .section {
+            background: rgba(15, 25, 45, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            letter-spacing: 1px;
+        }
+
+        .section-title:after {
+            content: '';
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #00ffff, #00ffff, #00ffff);
+            display: block;
+            margin: 15px auto;
+            border-radius: 2px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px #00ffff; }
+            100% { box-shadow: 0 0 15px #00ffff, 0 0 25px #ff006e; }
+        }
+
+        /* About Section */
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: center;
+            color: #b8c4ff;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-card {
+            background: rgba(20, 30, 60, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.15);
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: #00ffff;
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(0, 255, 255, 0.4);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            color: #00ffff;
+            display: none;
+        }
+
+        .skill-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .project-card {
+            background: rgba(20, 30, 60, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            border-color: #00ffff;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(0, 255, 255, 0.4);
+        }
+
+        .project-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            color: #b8c4ff;
+            line-height: 1.5;
+            max-height: 4.5em; /* 3 lines of text */
+            overflow: hidden;
+            position: relative;
+            transition: max-height 0.5s ease;
+        }
+
+        .project-desc.expanded {
+            max-height: 500px; /* Enough to show all content */
+            overflow-y: auto;
+        }
+
+        /* Scrollbar styling */
+        .project-desc.expanded::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .project-desc.expanded::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        .project-desc.expanded::-webkit-scrollbar-thumb {
+            background: rgba(0, 255, 255, 0.3);
+            border-radius: 4px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .project-desc.expanded::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 255, 255, 0.5);
+        }
+
+        .project-toggle {
+            display: inline-block;
+            margin-top: 10px;
+            color: #00ffff;
+            background: transparent;
+            border: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+
+        .project-toggle:hover {
+            background: rgba(0, 255, 255, 0.1);
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #00ffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+        }
+
+        /* Certificates Grid */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .certificate-card {
+            background: rgba(20, 30, 60, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .certificate-card:hover {
+            border-color: #00ffff;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(0, 255, 255, 0.4);
+        }
+
+        .certificate-card::after {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            color: #00ffff;
+        }
+
+        .certificate-icon {
+            font-size: 2rem;
+            color: #ff006e;
+            margin-bottom: 12px;
+            display: none;
+        }
+
+        .certificate-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .certificate-org {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-bottom: 8px;
+        }
+
+        .certificate-date {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        /* CV Download Section */
+        .cv-section {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .cv-btn {
+            background: linear-gradient(135deg, #00ffff, #00ffff);
+            color: #ffffff;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .cv-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 10px 30px rgba(0, 255, 255, 0.4),
+                0 0 20px rgba(0, 255, 255, 0.4);
+        }
+
+        .cv-btn:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: rgba(15, 25, 45, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            position: relative;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-card {
+            background: rgba(20, 30, 60, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .contact-card:hover::before {
+            left: 100%;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            border-color: #00ffff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(0, 255, 255, 0.4);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-icon i {
+            color: #00ffff;
+            font-size: 1.2rem;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-bottom: 3px;
+        }
+
+        .contact-value {
+            font-size: 0.9rem;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Social Media Icons */
+        .social-footer {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            /* margin-top: 40px;
+            padding: 30px;
+            background: rgba(15, 25, 45, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(15px); */
+        }
+
+        .social-footer a {
+            color: #b8c4ff;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .social-footer a:hover {
+            color: #00ffff;
+            transform: translateY(-5px);
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+        }
+
+        .social-footer a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00ffff;
+            transition: width 0.3s ease;
+        }
+
+        .social-footer a:hover::after {
+            width: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+            
+            .certificates-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-footer {
+                gap: 15px;
+                padding: 20px;
+            }
+            
+            .social-footer a {
+                font-size: 1.7rem;
+            }
+        }
+
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="profile-img-container">
+                <img id="profile-image" class="profile-img" src="profile.jpg" alt="Profile">
+            </div>
+            <h1 class="name">Bashar J. Younis</h1>
+            <p class="title">Cyber Security</p>
+        </div>
+
+        <!-- About Section -->
+        <div class="section">
+            <h2 class="section-title">About Me</h2>
+            <p class="about-text">
+                Passionate cyber security student with a solid foundation in network security, ethical hacking, and web exploitation. Committed to safeguarding digital assets and staying ahead of evolving cyber threats. Currently pursuing advanced certifications while gaining hands-on experience in penetration testing, malware analysis, and security incident response.
+
+                In addition to cyber security, I enjoy web design and development as a personal hobby, allowing me to blend creativity with technical skills. I also aspire to become a researcher, with a strong interest in conducting research on quantum cryptography in the future.
+            </p>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="section">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <!-- 1 -->
+                <div class="skill-card">
+                    <div class="skill-name">C++</div>
+                </div>
+                <!-- 2 -->
+                <div class="skill-card">
+                    <div class="skill-name">Python</div>
+                </div>
+                <!-- 3 -->
+                <div class="skill-card">
+                    <div class="skill-name">Linux</div>
+                </div>
+                <!-- 4 -->
+                <div class="skill-card">
+                    <div class="skill-name">Malware Analysis</div>
+                </div>
+                <!-- 5 -->
+                <div class="skill-card">
+                    <div class="skill-name">Web Exploitation</div>
+                </div>
+                <!-- 6 -->
+                <div class="skill-card">
+                    <div class="skill-name">Web Development</div>
+                </div>
+                <!-- 7 -->
+                <div class="skill-card">
+                    <div class="skill-name">Ethical Hacking</div>
+                </div>
+                <!-- 8 -->
+                <div class="skill-card">
+                    <div class="skill-name">Cryptography</div>
+                </div>
+                <!-- 9 -->
+                <div class="skill-card">
+                    <div class="skill-name">Problem Solving</div>
+                </div>
+                <!-- 10 -->
+                <div class="skill-card">
+                    <div class="skill-name">Risk Management</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="section">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-name">Cyber Security Department at JUST Website</div>
+                    <div class="project-desc" id="project-desc-1">
+                       <p>
+                          My first project was a website for the Cyber Security Department at Jordan University of Science and Technology, which includes three majors: Cyber Security, Internet of Things, and Game Design and Development. The website offers many features designed to support students, whether they are new or senior, by helping them on multiple levels, especially academically.
+                       </p>
+
+                    <p>
+                        Some of the most important features of the website include a university GPA calculator, study resources for all three majors, dedicated communities for each major, and simplified methods to facilitate communication with the department’s professors.
+                    </p>
+
+                    <p>
+                        I completed this project in 2025 while I was a second-year student majoring in Cyber Security at Jordan University of Science and Technology, under the supervision of Dr. Qasem Abu Al-Heijah.
+                    </p>
+                    </div>
+                    <button class="project-toggle" onclick="toggleProjectDesc(1)">Show more</button>
+                    <a href="#" class="project-link">View Details</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certificates Section -->
+        <div class="section">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certificates-grid">
+                <!-- 1 -->
+                <div class="certificate-card" onclick="openGoogleDrive('https://drive.google.com/file/d/18xAgLn6XKy0Jr5cVgGaT9pISYPxjQHhL/view?usp=drive_link')">
+                    <div class="certificate-name">Ethical Hacker</div>
+                    <div class="certificate-org">Cisco</div>
+                    <div class="certificate-date">2025</div>
+                </div>
+                <!-- 2 -->
+                <div class="certificate-card" onclick="openGoogleDrive('https://drive.google.com/file/d/1Zj1cM3F4-sKtkep3YhbAM4Y2IuA8Yr4l/view?usp=drive_link')">
+                    <div class="certificate-name">Malware Analysis</div>
+                    <div class="certificate-org">Mahara-Tech</div>
+                    <div class="certificate-date">2025</div>
+                </div>
+                <!-- 3 -->
+                <div class="certificate-card" onclick="openGoogleDrive('https://drive.google.com/file/d/16Qv2x2TF5hTSH3aiqJBkccw-wsEjh-Gg/view?usp=drive_link')">
+                    <div class="certificate-name">Python</div>
+                    <div class="certificate-org">Cisco</div>
+                    <div class="certificate-date">2025</div>
+                </div>
+                <!-- 4 -->
+                <div class="certificate-card" onclick="openGoogleDrive('https://drive.google.com/file/d/1rm5Zs6bi9IpKQtqVjOv0vArY0Hh9QgPw/view?usp=drive_link')">
+                    <div class="certificate-name">Problem Solving</div>
+                    <div class="certificate-org">JUST - ACM</div>
+                    <div class="certificate-date">2025</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="contact-grid">
+                <!-- Email -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">basharjyounis@gmail.com</div>
+                    </div>
+                </div>
+                
+                <!-- Phone -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-value">+962 7 9933 5092</div>
+                    </div>
+                </div>
+                
+                <!-- Location -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-label">Location</div>
+                        <div class="contact-value">Amman, Jordan</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CV Download Section -->
+        <div class="section cv-section">
+            <a href="https://drive.google.com/uc?export=download&id=i هون لازم تضيف الاي دي" class="cv-btn" download="Introduction to CTF.pdf">Download (CV)</a>
+        </div>
+        
+        <!-- Social Media Icons -->
+        <div class="social-footer">
+            <a href="https://instagram.com/basharjyounis" target="_blank" rel="noopener">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/bashar-jehad-younis-57b8332b5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://facebook.com/basharjyounis" target="_blank" rel="noopener">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://github.com/BasharJYounis" target="_blank" rel="noopener">
+                <i class="fab fa-github"></i>
+        </div>
+    </div>
+
+    <script>
+        // Function to open Google Drive links
+        function openGoogleDrive(url) {
+            window.open(url, '_blank');
+        }
+
+        // Function to handle profile image upload
+        function handleProfileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profile-image').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Function to toggle project description
+        function toggleProjectDesc(id) {
+            const desc = document.getElementById(`project-desc-${id}`);
+            const button = desc.nextElementSibling;
+            
+            if (desc.classList.contains('expanded')) {
+                desc.classList.remove('expanded');
+                button.textContent = 'Show more';
+            } else {
+                desc.classList.add('expanded');
+                button.textContent = 'Show less';
+            }
+        }
+
+        // Add smooth scrolling animation on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section, .header, .contact-section');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    section.style.transition = 'all 0.8s ease';
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+
+    </script>
+</body>
+</html>
